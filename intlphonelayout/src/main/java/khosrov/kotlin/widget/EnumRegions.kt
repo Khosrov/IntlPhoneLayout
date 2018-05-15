@@ -102,7 +102,7 @@ object EnumRegions {
          */
         fun indexOfPrefix(prefix: Int): Int {
             for (i in 0 until this.size) {
-                if (this[i].prefix === prefix) {
+                if (this[i].prefix == prefix) {
                     return i
                 }
             }
