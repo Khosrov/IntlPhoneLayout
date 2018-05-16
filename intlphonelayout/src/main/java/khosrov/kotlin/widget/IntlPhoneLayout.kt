@@ -186,6 +186,11 @@ class IntlPhoneLayout : RelativeLayout {
         }
     }
 
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int): super(context, attrs,defStyleAttr) {
+        if(!isInEditMode){
+            init(attrs)
+        }
+    }
     /**
      * Init after constructor
      */
