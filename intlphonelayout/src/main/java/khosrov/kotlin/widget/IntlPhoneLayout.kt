@@ -164,9 +164,7 @@ class IntlPhoneLayout : RelativeLayout {
         }
 
     /**
-     * Constructor
-     *
-     * @param context Context
+     * Constructors
      */
     constructor(context: Context) : super(context) {
         if(!isInEditMode){
@@ -174,12 +172,6 @@ class IntlPhoneLayout : RelativeLayout {
         }
     }
 
-    /**
-     * Constructor
-     *
-     * @param context Context
-     * @param attrs   AttributeSet
-     */
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         if(!isInEditMode){
             init(attrs)
@@ -191,6 +183,14 @@ class IntlPhoneLayout : RelativeLayout {
             init(attrs)
         }
     }
+    @TargetApi(21)
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes) {
+        if(!isInEditMode){
+            init(attrs)
+        }
+    }
+
+
     /**
      * Init after constructor
      */
