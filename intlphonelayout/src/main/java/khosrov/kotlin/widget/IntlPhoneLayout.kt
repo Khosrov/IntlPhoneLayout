@@ -12,6 +12,7 @@ import android.support.design.widget.TextInputEditText
 import android.support.design.widget.TextInputLayout
 import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
@@ -398,7 +399,10 @@ class IntlPhoneLayout : RelativeLayout {
                     iso = selectedCountry!!.iso
                 }
                 val phoneNumber = mPhoneUtil.parse(s.toString(), iso)
-                iso = mPhoneUtil.getRegionCodeForNumber(phoneNumber)
+                if(phoneNumber!=null){
+                    iso = mPhoneUtil.getRegionCodeForNumber(phoneNumber)
+                }
+
                 if (iso != null) {
                     val countryIdx = mCountries!!.indexOfIso(iso)
                     mRegionSpinner!!.setSelection(countryIdx)
