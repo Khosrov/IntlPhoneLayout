@@ -105,12 +105,18 @@ class IntlPhoneLayout : RelativeLayout {
             }
             val phoneNumber = mPhoneUtil.parse(number, iso)
 
-            val countryIdx = mCountries!!.indexOfIso(mPhoneUtil.getRegionCodeForNumber(phoneNumber))
-            selectedCountry = mCountries!![countryIdx]
-            mRegionSpinner!!.setSelection(countryIdx)
+            val regCodeForNumber = mPhoneUtil.getRegionCodeForNumber(phoneNumber);
+            if(regCodeForNumber!=null) {
+                val countryIdx = mCountries!!.indexOfIso(mPhoneUtil.getRegionCodeForNumber(phoneNumber))
+                selectedCountry = mCountries!![countryIdx]
+                mRegionSpinner!!.setSelection(countryIdx)
+                mPhoneEdit!!.setText(mPhoneUtil.format(phoneNumber, PhoneNumberUtil.PhoneNumberFormat.NATIONAL))
+            }else{
+                mRegionSpinner!!.setSelection(0)
+                mPhoneEdit!!.setText("")
+            }
 
 
-            mPhoneEdit!!.setText(mPhoneUtil.format(phoneNumber, PhoneNumberUtil.PhoneNumberFormat.NATIONAL))
         } catch (ignored: NumberParseException) {
         }
 
